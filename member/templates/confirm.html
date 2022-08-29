@@ -1,0 +1,40 @@
+<!-- base로 잡를 필요 없음 -->
+<!-- confirm 메시지 창 이기때문 -->
+{% load static %}
+<h2> 아이디 중복 확인 </h2>
+<link type="text/css" rel="stylesheet" href="{% static 'css/style_member.css'%}">
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+{% if result == 0 %}
+<table>
+	<tr>
+		<th>{{id}}는 사용할 수 있습니다 </th>
+	</tr>
+	<tr>
+		<td align="center">
+			확인을 눌러주세요
+		<input class="inputbutton" type="button" value="확인" onclick="setid('{{id}}')">
+	</tr>
+</table>
+{% else %}
+<!-- method가 비어잇으면 get방식임 -->
+<form name="confirmfrom" action="confirm">
+	<table>
+		<tr>
+			<th colspan="2">{{id}}는 사용할 수 없습니다</th>
+		</tr>
+		<tr>
+			<th> 아이디 </th>
+			<td><input class="input" type="text" name="id"></td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" value="확인">
+				<input class="inputbutton" type="button" value="확인취소"
+					onclick="self.close()">
+		</tr>
+	</table>
+</form>
+{% endif %}
