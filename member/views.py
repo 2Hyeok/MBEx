@@ -89,7 +89,7 @@ class WriteView( View ):
             logtime = DateFormat( datetime.now() ).format( "Y-m-d" )            
             )
         dto.save()
-        logger.info("writer : " + dto.id) # 문자열로 형변환을 해주어야함, 회원가입시 해당 아이디를 로그에 저장
+        logger.info("writer : " + str(id)) # 문자열로 형변환을 해주어야함, 회원가입시 해당 아이디를 로그에 저장
         # 저장을 무엇으로 할지 정해야함, logger, info, error, critical 등 함수로 잡아야함, 가입한 아이디만 표시
         # 세팅에 info 밑에만 잡게 되어있기에 info로 잡아야함
         # 문자열 하나만 넘어가게 되어있어서 , 가아닌 +를 주어야함
