@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/style_board.css'%}">
+		<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+		<script src="{% static 'js/script.js' %}"></script>
+	</head>
+	<body>
+		{% block title %} <h2> 게시판 </h2> {% endblock %}
+		{% block header %} 상단메뉴 {% endblock %}
+		<br>
+		<br>
+		{% block contents %}
+		
+		
+		
+		
+		
+		{% endblock %}
+		<br>
+		{% block footer %} 하단메뉴 {% endblock %}
+	</body>
+</html>
