@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} <h2> 회원 탈퇴 </h2> {% endblock %}
+
+{% block contents %}
+{% csrf_token %}
+<form method="post" action="delete" name="deleteform">
+	<table>
+		<tr>
+			<th colspan="2">
+				{% if message %}
+					{{ message }}
+				
+				{% else %}
+					비밀번호를 다시 확인하세요
+				
+				{% endif %}
+			</th>
+		</tr>
+		<tr>
+			<th> 비밀번호 </th>
+			<td><input class="input" type="password" name="passwd"></td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" value="탈퇴">
+				<input class="inputbutton" type="button" value="탈퇴취소"
+					onclick="location='main'">
+			</th>
+		</tr>
+	</table>
+</form>
+{% endblock %}

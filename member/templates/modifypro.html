@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} <h2> 회원정보 수정 </h2> {% endblock %}
+
+{% block contents %}
+{% csrf_token %}
+<form method="post" action="modifypro" name="modifyform">
+	<table>
+		<tr>
+			<th colspan="2"> 수정할 정보를 입력하세요 </th> 
+		</tr>
+		<tr>
+			<th> 아이디 </th>
+			<td>&nbsp;{{dto.id}}</td>
+		</tr>
+		<tr>
+			<th rowspan="2"> 비밀번호 </th>
+			<td><input class="input" type="password" name="passwd" value="{{dto.passwd}}"></td>
+		</tr>
+		<tr>
+			<td><input class="input" type="password" name="repasswd" value="{{dto.passwd}}"></td>
+		</tr>
+		<tr>
+			<th> 이름 </th>
+			<td>&nbsp; {{dto.name}} </td>
+		</tr>
+		<tr>
+			<th> 이메일 </th>
+			<td>
+				{% if dto.email %}
+					<input class="input" type="text" name="email" value="dto.email}}">
+				{% else %}
+					<input class="input" type="text" name="email">
+				{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<th> 전화번호 </th>
+			<td>
+				{% if t %}
+					<input class="input" type="text" name="tel1" style="width:30px" maxlength="3" value="{{t.0}}">
+					- <input class="input" type="text" name="tel2" style="width:40px" maxlength="4" value="{{t.1}}">
+					- <input class="input" type="text" name="tel3" style="width:40px" maxlength="4" value="{{t.2}}">
+				{% else %}
+					<input class="input" type="text" name="tel1" style="width:30px" maxlength="3">
+					<input class="input" type="text" name="tel2" style="width:40px" maxlength="4">
+					<input class="input" type="text" name="tel3" style="width:40px" maxlength="4">
+				{% endif %}
+			</td>
+		</tr>
+		<tr>
+			<th> 가입일자 </th>
+			<td>&nbsp;{{dto.logtime | date:"Y-m-d H:i"}}
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" type="submit" value="수정">
+				<input class="inputbutton" type="button" type="submit" value="수정취소"
+					onclick="location='main'">
+			</th>
+		</tr>
+	</table>
+</form>
+{% endblock %}

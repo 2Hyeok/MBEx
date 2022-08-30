@@ -8,6 +8,29 @@
 <!-- 아이디 비밀번호도 안넘어가게 막아야함 -->
 <!-- 아예 전체를 다 jquery로 만들예정 -->
 
+<!-- 로그인이 된 main -->
+<!-- memid가 있냐 -->
+<!-- 세션이 안없어짐 장고는 세션이 없고 쿠키에 저장을함 -->
+<!-- 세션처럼 동작하게 해야함 -->
+{% if memid %}
+<table>
+	<tr>
+		<th><span>{{memid}}</span>님 안녕하세요</th>
+	</tr>
+	<tr>
+		<td align="center">
+			<input class="inputbutton" type="button" value="수정"
+				onclick="location='modify'">
+			<input class="inputbutton" type="button" value="탈퇴"
+				onclick="location='delete'">
+			<input class="inputbutton" type="button" value="로그아웃"
+				onclick="location='logout'">
+		</td>
+	</tr>
+</table>
+
+<!-- 로그인이 안된 main -->
+{% else %}
 {% csrf_token %}
 <form name="mainform" method="post" action="login" onsubmit="return maincheck()">
 	<table>
@@ -31,4 +54,5 @@
 			</th>
 	</table>
 </form>
+{% endif %}
 {% endblock %}

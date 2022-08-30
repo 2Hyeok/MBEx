@@ -7,7 +7,11 @@ urlpatterns = [
     path("main", views.MainView.as_view(), name="main"),
     path("write", views.WriteView.as_view(), name="write"),
     path("confirm", views.ConfirmView.as_view(),name="confirm"),
-    path("login", views.LoginView.as_view(),name="login")
+    path("login", views.LoginView.as_view(),name="login"),
+    path("logout", views.LogoutView.as_view(),name="logout"),
+    path("delete", views.DeleteView.as_view(),name="delete"),
+    path("modify", views.ModifyView.as_view(),name="modify"),
+    path("modifypro", views.ModifyProView.as_view(),name="modifypro"),
     ]
 
 # main 처럼 생성하면 views 에 만들어줄 필요 없음
