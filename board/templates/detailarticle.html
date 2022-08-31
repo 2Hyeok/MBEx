@@ -1,0 +1,37 @@
+{% extends "base_board.html" %}
+{% block title %} <h2> 글 보 기</h2> {% endblock %}
+
+{% block contents %}
+<table>
+	<tr>
+		<th> 글 번호 </th>
+		<td style="text-align:center"> {{number}} </td>
+		<th> 조회수 </th>
+		<td style = "text-align:center"> {{dto.readcount}} </td>
+	</tr>
+	<tr>
+		<th> 작성자 </th>
+		<td style = "text-align:center"> {{dto.writer}} </td>
+		<th> 작성일 </th>
+		<td style = "text-align:center"> {{dto.regdate|date:"Y-m-d H:i"}} </td>
+	</tr>
+	<tr>
+		<th> 제목 </th>
+		<td colspan="3"> {{dto.subject}} </td>
+	</tr>
+	<tr>
+		<th> 내용 </th>
+		<td colspan="3"> <pre>{{dto.content}}</pre> </td>
+	</tr>
+	<tr>
+		<th colspan="4">
+			<input class="inputbutton" type="button" value="수정">
+			<input class="inputbutton" type="button" value="삭제">
+			<input class="inputbutton" type="button" value="답글"
+				onclick="location='write?num={{dto.num}}&ref={{dto.ref}}&restep={{dto.restep}}&relevel={{dto.relevel}}'">
+			<input class="inputbutton" type="button" value="목록"
+				onclick="location='list?pagenum={{pagenum}}'">
+		</th>
+	</tr>
+</table>
+{% endblock %}

@@ -1,14 +1,17 @@
 {% extends "base_board.html" %}
 
-{% block title %} <h2> 글 목록 (전체글 : {{count}}) </h2> {% endblock %}
+{% block title %} <h2> 글 목 록 ( 전체글 : {{count}} )</h2> {% endblock %}
 
 {% block contents %}
-<!-- 글이 있나 없나 검사 해애함 -->
+
+{% load mathfilters %}
+{% load static %}
 <table>
 	<tr>
 		<td style="text-align:right" colspan="6">
-		<!-- app_name을 쓴경우 urls의 name의 이름을 써주어야함 -->
-		<a href="{% url 'board:write' %}">글쓰기&nbsp;&nbsp;&nbsp;</a>
+			<!-- app_name을 쓴경우 urls의 name의 이름을 써주어야함 -->
+			<a href="{% url 'board:write' %}">글쓰기</a>&nbsp;&nbsp;&nbsp; 
+		</td>
 	</tr>
 	<tr>
 		<th style="width:8%"> 글번호 </th>
@@ -16,14 +19,72 @@
 		<th style="width:15%"> 작성자 </th>
 		<th style="width:8%"> 조회수 </th>
 		<th style="width:15%"> 작성일 </th>
-		<th style="width:20%"> 아이피 </th>
+		<th style="width:15%"> IP </th>
 	</tr>
-		{% if count == 0 %}
-		
-		
-		{% else %}
-		
-		
-		{% endif %}
+	{% if count == 0 %}	
+		<tr>
+			<td colspan="6" style="text-align:center">
+				게시판에 글이 없습니다. 글쓰기 눌러주세요
+			</td>
+		</tr>		
+	{% else %}
+		{% for dto in dtos %}
+			<tr>
+				<td style="text-align:center">
+					<!-- number-1 이게 불가능함, 이안에서 작업을 할 수가 없음, 단순 변수 출력하는 구문임 -->
+					<!-- number 는 무조건 10임 -->
+					<!-- 반복문 돌때마다 증가하는값을 넣어주어야함 -->
+					{{number|sub:forloop.counter0}}
+				</td>
+				<td>
+					{% if dto.readcount == -1 %}
+						삭제된 글입니다
+					{% else %}
+						{% if dto.relevel > 1 %}
+							<img src="{% static 'images/level.gif'%}" border=0 height=20
+								width="{{dto.relevel|mul:7}}">
+						{% endif %}
+						{% if dto.relevel > 0 %}
+							<img src="{% static 'images/re.gif'%}" border=0 width="15">						
+						{% endif %}					
+						<a href="detail?num={{dto.num}}&pagenum={{pagenum}}&number={{number|sub:forloop.counter0}}">
+							{{dto.subject}}
+						</a>
+					{% endif %}	
+				</td>
+				<td style="text-align:center">
+					{{dto.writer}}
+				</td>
+				<td style="text-align:center">
+					{{dto.readcount}}
+				</td>
+				<td style="text-align:center">
+					{{dto.regdate|date:"Y-m-d H:i"}}
+				</td>
+				<td style="text-align:center">
+					{{dto.ip}}
+				</td>
+			</tr>
+		{% endfor %}
+	{% endif %}
 </table>
+<br>
+
+{% if startpage > pageblock %}
+	<a href="list?pagenum={{startpage|sub:pageblock}}">[◀]</a>
+{% endif %}
+<!-- range가 안들어감, range(stratrpage, endpage), 이런식인데 pages라고 만들어서 가져옴 -->
+{% for page in pages %}
+	<!-- 현재 보는 페이지랑 같다 -->
+	{% if pagenum == page %}
+		<b>[{{page}}]</b>
+	<!-- 다르다 -->
+	{% else %}
+		<a href="list?pagenum={{page}}">[{{page}}]</a>
+	{% endif %}	
+{% endfor %}
+{% if endpage < pagecount %}
+	<a href="list?pagenum={{startpage|add:pageblock}}">[▶]</a>
+{% endif %}
+	
 {% endblock %}
