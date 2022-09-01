@@ -18,6 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 import os
+MEDIA_URL="/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
 LOGGING = {
     "version" : 1,
     "disable_existing_loggers" : False, # 보이지 않겠냐
@@ -82,7 +85,7 @@ SECRET_KEY = 'django-insecure-#)p#755)(_x=+gedufg+og_n#gbnlzpa9fe$z0u4&5q(a&uvq4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.0.119"]
 
 
 # Application definition

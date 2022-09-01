@@ -25,8 +25,10 @@
 	</tr>
 	<tr>
 		<th colspan="4">
-			<input class="inputbutton" type="button" value="수정">
-			<input class="inputbutton" type="button" value="삭제">
+			<input class="inputbutton" type="button" value="수정"
+				onclick="location='modify?num={{dto.num}}&pagenum={{pagenum}}'">
+			<input class="inputbutton" type="button" value="삭제"
+				onclick="location='delete?num={{dto.num}}&pagenum={{pagenum}}'">
 			<input class="inputbutton" type="button" value="답글"
 				onclick="location='write?num={{dto.num}}&ref={{dto.ref}}&restep={{dto.restep}}&relevel={{dto.relevel}}'">
 			<input class="inputbutton" type="button" value="목록"

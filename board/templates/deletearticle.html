@@ -1,0 +1,33 @@
+{% extends "base_board.html" %}
+{% block title %} <h2> 글 삭제 </h2> {% endblock %}
+
+{% block contents %}
+{% csrf_token %}
+<form method="post" name="deleteform" action="delete">
+	<input type="hidden" name="num" value="{{num}}">
+	<input type="hidden" name="pagenum" value="{{pagenum}}">
+	<table>
+		<tr>
+			<th colspan="2">
+				{% if message %}
+					{{message}}
+					
+				{% else %}
+					비밀번호를 입력해
+				{% endif %}
+			</th>
+		</tr>
+		<tr>
+			<th> 비밀번호</th>
+			<td><input class="input" type="password" name="passwd">
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" value="삭제">
+				<input class="inputbutton" type="button" value="삭제취소"
+					onclick="location='list?pagenum={{pagenum}}'">
+			</th>
+		</tr>
+	</table>
+</form>
+{% endblock %}

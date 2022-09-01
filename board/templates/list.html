@@ -56,7 +56,12 @@
 					{{dto.writer}}
 				</td>
 				<td style="text-align:center">
-					{{dto.readcount}}
+					<!-- -1 일경우 아무것도 출력하지 않는다. -->
+					{% if dto.readcount == -1 %}
+						&nbsp;
+					{% else %}
+						{{dto.readcount}}
+					{% endif %}
 				</td>
 				<td style="text-align:center">
 					{{dto.regdate|date:"Y-m-d H:i"}}
@@ -73,7 +78,7 @@
 {% if startpage > pageblock %}
 	<a href="list?pagenum={{startpage|sub:pageblock}}">[◀]</a>
 {% endif %}
-<!-- range가 안들어감, range(stratrpage, endpage), 이런식인데 pages라고 만들어서 가져옴 -->
+<!-- range가 안들어감, range(stratrpage, endpage), 이런식인데 사용하지 못하기에 pages라고 만들어서 가져옴 -->
 {% for page in pages %}
 	<!-- 현재 보는 페이지랑 같다 -->
 	{% if pagenum == page %}

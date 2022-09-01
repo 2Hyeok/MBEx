@@ -1,0 +1,16 @@
+{% extends "base_board.html" %}
+
+{% block title %} <h2> 이미지 다운로드 </h2> {% endblock %}
+
+{% block contents %}
+
+{% for dto in dtos %}
+	<!-- 이미지 이름, 사진 반복문 출력 --> <!-- 절대경로 -->
+	{{dto.title}}<br>
+	{{dto.photo}}<br>
+	{{dto.photo.path}}<br>
+
+	<img src="{{dto.photo.url}}" border="0" width="200" height="100">
+
+{% endfor %}
+{% endblock %}

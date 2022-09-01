@@ -13,3 +13,8 @@ class Board( models.Model ) :
     relevel = models.IntegerField( verbose_name="글레벨" )
     regdate = models.DateTimeField( auto_now_add=True, verbose_name="작성일", blank=True )
     ip = models.CharField( max_length=30, verbose_name="아이피" )
+    
+class ImageBoard(models.Model):
+    title = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to="images") # 미디어 패키지 밑에 경로를 추가할것이라면 경로를 추가 해 주어야함 /media는 생략
+                                                    # 그럼 경로는 media/images 라고 됨

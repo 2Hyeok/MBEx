@@ -38,3 +38,7 @@
 [2022-08-29 20:53:42] INFO [member.views:92] writer : qqqqw
 [2022-08-30 11:14:10] INFO [member.views:56] id : qwe
 [2022-08-30 11:14:18] INFO [member.views:95] writer : qwe
+[2022-08-31 10:25:44] INFO [member.views:56] id : qweq
+[2022-08-31 10:25:46] INFO [member.views:56] id : qqqqq
+[2022-08-31 10:25:52] INFO [member.views:95] writer : qqqqq
+[2022-09-01 10:36:28] INFO [board.views:188] <QuerySet []>

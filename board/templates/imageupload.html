@@ -1,0 +1,26 @@
+{% extends "base_board.html" %}
+
+{% block title %} <h2> 이미지 업로드 </h2> {% endblock %}
+
+{% block contents %}
+{% csrf_token %}
+<!-- enctype은 꼭 주어야한다 안그러면 에러남 -->
+<form method="post" action="image" enctype="multipart/form-data">
+	<table>
+		<tr>
+			<th> 제목 </th>
+			<td><input class="input" type="text" name="title"></td>
+		</tr>
+		<tr>
+			<th> 이미지 </th>
+			<td><input type="file" name="photo"></td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input class="inputbutton" type="submit" value="업로드">
+				<input class="inputbutton" type="reset" value="취소">
+			</th>
+		</tr>
+	</table>
+</form>
+{% endblock %}
