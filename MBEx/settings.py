@@ -136,12 +136,26 @@ WSGI_APPLICATION = 'MBEx.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# 딕셔너리 형식으로
+DATABASES = {
+    'default' : {
+        'ENGINE' : 'django.db.backends.mysql',
+        'NAME' : "bit",
+        "USER" : "bit",
+        "PASSWORD" : "bit",
+        "HOST" : "localhost",
+        "PORT" : "3306",
+        }
+    }
+
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+'''
 
 
 # Password validation

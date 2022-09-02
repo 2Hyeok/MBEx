@@ -42,3 +42,5 @@
 [2022-08-31 10:25:46] INFO [member.views:56] id : qqqqq
 [2022-08-31 10:25:52] INFO [member.views:95] writer : qqqqq
 [2022-09-01 10:36:28] INFO [board.views:188] <QuerySet []>
+[2022-09-02 10:45:15] INFO [member.views:56] id : aaa
+[2022-09-02 10:45:25] INFO [member.views:95] writer : aaa
