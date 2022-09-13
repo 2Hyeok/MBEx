@@ -105,7 +105,7 @@ class WriteView(View):
             relevel = request.GET["relevel"]
             res = Board.objects.filter(ref__exact=ref).filter(restep__gt=restep) # gt, 크냐로 들어감 get, 순서 중요, 체이닝 이용해서 할것
             for re in res :
-                re.restep = int(re.restep + 1) # 원레는 +1 해주면 되는데 자료형이 안넘어와 강제 형변환필요
+                re.restep = int(re.restep) + 1 # 원레는 +1 해주면 되는데 자료형이 안넘어와 강제 형변환필요
                 re.save()
             
             restep = int(restep) + 1
